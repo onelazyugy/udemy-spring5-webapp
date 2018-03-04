@@ -13,15 +13,16 @@ import java.util.Set;
 @Data
 @Getter
 @Setter
-@NoArgsConstructor
 @ToString
+@RequiredArgsConstructor //must set the final as final
 @EqualsAndHashCode(exclude = {"firstName", "lastName", "books"})
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private String firstName;
-    private String lastName;
+    //we only want a constructor with firstName and lastName
+    private final String firstName;
+    private final String lastName;
     @ManyToMany(mappedBy = "authors")
     private Set<Book> books = new HashSet<>();
 

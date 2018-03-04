@@ -14,8 +14,9 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor //must set the final as final
+@RequiredArgsConstructor
 @EqualsAndHashCode(exclude = {"firstName", "lastName", "books"})
+
 public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

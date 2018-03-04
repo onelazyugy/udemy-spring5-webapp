@@ -1,4 +1,4 @@
-package com.le.viet.spring5webapp;
+package com.le.viet.spring5webapp.bootstrap;
 
 import com.le.viet.spring5webapp.model.Author;
 import com.le.viet.spring5webapp.model.Book;

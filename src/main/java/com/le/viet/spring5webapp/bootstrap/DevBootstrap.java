@@ -2,8 +2,10 @@ package com.le.viet.spring5webapp.bootstrap;
 
 import com.le.viet.spring5webapp.model.Author;
 import com.le.viet.spring5webapp.model.Book;
+import com.le.viet.spring5webapp.model.Publisher;
 import com.le.viet.spring5webapp.repositories.AuthorReppository;
 import com.le.viet.spring5webapp.repositories.BookRepository;
+import com.le.viet.spring5webapp.repositories.PublisherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
@@ -17,6 +19,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>{
 
     private AuthorReppository authorReppository;
     private BookRepository bookRepository;
+    private PublisherRepository publisherRepository;
 
     //---------- field injection
 //    @Autowired
@@ -39,16 +42,23 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>{
     //---------- END
 
     //---------- constructor INJECTION of book and author repositories
-    public DevBootstrap(AuthorReppository authorReppository, BookRepository bookRepository) {
+    public DevBootstrap(AuthorReppository authorReppository, BookRepository bookRepository, PublisherRepository publisherRepository) {
         this.authorReppository = authorReppository;
         this.bookRepository = bookRepository;
+        this.publisherRepository = publisherRepository;
     }
     //--END
 
     private void initData() {
+        //publisher
+        Publisher publisher = new Publisher();
+        publisher.setName("foo");
+
+        publisherRepository.save(publisher);
+
         //Erir
         Author eric = new Author("Eric", "Evans");
-        Book ddd = new Book("Domain Drive Design", "1234", "Harper Collins");
+        Book ddd = new Book("Domain Drive Design", "1234", publisher);
         eric.getBooks().add(ddd);
 
         authorReppository.save(eric);
@@ -56,7 +66,7 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>{
 
         //Rod
         Author rod = new Author("Rod", "Johnson");
-        Book noEJB = new Book("J2EE Devloplement without EJB", "23444", "Worx");
+        Book noEJB = new Book("J2EE Devloplement without EJB", "23444", publisher);
         rod.getBooks().add(noEJB);
 
         authorReppository.save(rod);

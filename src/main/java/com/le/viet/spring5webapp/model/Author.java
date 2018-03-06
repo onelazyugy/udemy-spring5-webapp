@@ -15,6 +15,7 @@ import java.util.Set;
 @Setter
 @ToString
 @RequiredArgsConstructor
+@NoArgsConstructor(force = true)
 @EqualsAndHashCode(exclude = {"firstName", "lastName", "books"})
 
 public class Author {

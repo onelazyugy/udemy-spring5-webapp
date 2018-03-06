@@ -14,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 @RequiredArgsConstructor
+@NoArgsConstructor(force = true)
 @ToString
 @EqualsAndHashCode(exclude = {"title", "isbn", "publisher"})
 public class Book {

@@ -4,6 +4,7 @@ import com.le.viet.spring5webapp.model.Author;
 import com.le.viet.spring5webapp.model.Book;
 import com.le.viet.spring5webapp.repositories.AuthorReppository;
 import com.le.viet.spring5webapp.repositories.BookRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
@@ -17,7 +18,27 @@ public class DevBootstrap implements ApplicationListener<ContextRefreshedEvent>{
     private AuthorReppository authorReppository;
     private BookRepository bookRepository;
 
-    //constructor INJECTION of book and author repositories
+    //---------- field injection
+//    @Autowired
+//    private AuthorReppository authorReppository;
+//    @Autowired
+//    private BookRepository bookRepository;
+    //---------- END
+
+
+    //---------- setter injection
+//    @Autowired
+//    public void setAuthorReppository(AuthorReppository authorReppository) {
+//        this.authorReppository = authorReppository;
+//    }
+//
+//    @Autowired
+//    public void setBookRepository(BookRepository bookRepository) {
+//        this.bookRepository = bookRepository;
+//    }
+    //---------- END
+
+    //---------- constructor INJECTION of book and author repositories
     public DevBootstrap(AuthorReppository authorReppository, BookRepository bookRepository) {
         this.authorReppository = authorReppository;
         this.bookRepository = bookRepository;
